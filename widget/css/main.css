@@ -1,5 +1,6 @@
 @charset "utf-8";
 /*wap*/
+body{background: #ffffff;}
 .toast{position:absolute;
 	width:70%;
 	max-width:320px;
@@ -22,6 +23,7 @@
 .actInfo {width: 90%;
 	padding:2rem 5%;
 	font-size: 1.2rem;
+	background: #ffffff;
 }
 .actInfo p{
 	text-align: justify;
@@ -34,6 +36,7 @@
 	border:1px solid #6FACD5;
 	margin: 0 auto;
 	font-size: 1.1rem;
+	background: #ffffff;
 }
 .sign .title{
 	width: 40%;
