@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+	<head>
+	  	<meta charset="UTF-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	  	<link rel="icon" size="16*16" href="images/icon.png">
+		<link rel="stylesheet" type="text/css" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/flexslider.css">
+	  	<title>国学活动</title>
+	</head>
+	<body>
+		<header class="topHeader">
+			<h2>国学课堂</h2>
+		</header>
+		<div class="content">
+			<div class="flexslider">
+		        <ul class="slides">
+		            <li><img class="wapimg" src="images/img_1.jpg" /></li>
+		            <li><img class="wapimg" src="images/img_2.jpg" /></li>
+		            <li><img class="wapimg" src="images/img_3.jpg" /></li>
+		            <li><img class="wapimg" src="images/img_4.jpg" /></li>
+		        </ul>
+		    </div>
+		    <!-- 轮播图 end-->
+		    <div class="actInfo">
+		    	<p>【国学课堂】旨在提升会员的国学修养，将琴、棋、书、画等传统才艺嵌入到平常的活动中。本次我公司将邀请台湾国学大师＊＊＊，通过一整天的国学之旅，带领大家走进神奇的易经秘境，以及感受古琴的靡靡之音。</p>
+		    </div>
+		    <!-- 活动介绍 end-->
+		    <div class="sign">
+		    	<div class="title">
+		    		 <h3>活动报名</h3>
+		    	</div>
+			    <!-- <form method="get" action="http://oa.6noble.com/test/signin.php"> -->
+			    <form>
+			    	<div>
+			    		<div class="inputBox">性别：男<input type="radio" name="sex" value="0" checked>
+			    			  &nbsp;女<input type="radio"  value="1" name="sex">
+			    			</div>
+			    		<div class="inputBox">
+			    			电话：<input type="" id="mobile" name="phone">
+			    		</div>
+			    		<input type="button" id="btnSubmit"  class="btnSubmit" value="提交">
+			    	</div>
+			    </form>
+				<center>已报名人数：男  -  女</center>
+			</div>
+			<!-- 活动报名 end -->
+			<p class="toast"></p>
+	</body>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".flexslider").flexslider({
+			animation:'slide',
+		    slideshowSpeed: 4000, //展示时间间隔ms
+		    animationSpeed: 500, //滚动时间ms
+		    touch: true //是否支持触屏滑动(比如可用在手机触屏焦点图)
+		});
+		 //轮播图height
+        var height = $(window).height();
+        $('.flexslider').height(height*0.4);   
+        $('.flexslider ul li img').height(height*0.4);   
+        //手机号判断
+    	var isMobile = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d{8}$/; //手机号码验证规则
+    	//提交表单
+    	 $("#btnSubmit").click(function(){
+			var mobile = $("#mobile").val();
+			var sex = $('input[name="sex"]:checked').val();
+			if (!isMobile.test(mobile)) {
+				alert('请输入正确的手机号');
+				return false;
+			};
+	        $.ajax({
+					type : "get",
+					url : "http://oa.6noble.com/test/signin.php",
+					dataType : "jsonp",
+					jsonpCallback:"success_jsonpCallback",
+					// data:{"phone":mobile,"sex":sex},
+					data:$("#btnSubmit").serialize(),
+					success : function(json){
+						alert('success');
+					},
+					error:function(XMLHttpRequest, textStatus, errorThrown){
+						alert(XMLHttpRequest.status); //200
+						alert(XMLHttpRequest.statusText); //load
+                        alert(XMLHttpRequest.responseXML); //underfined
+                        alert(XMLHttpRequest.responseText); //underfined
+                        alert(textStatus); //parsererror
+                        alert(errorThrown); //Error:success_jsonpCallback was not called
+					}
+				});
+			});
+
+    	 //获取数据
+    	  function getData(){
+			$.ajax({
+	             type : "get",
+	             url : "http://oa.6noble.com/test/num.php",
+				 data:"{}",
+	             dataType : "jsonp",
+	             jsonp: "callbackparam",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+	             jsonpCallback:"success_jsonpCallback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+	             success : function(json){
+	                // alert(json);
+	                // alert(json[0].name);
+	             },
+	             error:function(XMLHttpRequest, textStatus, errorThrown){
+               		alert(XMLHttpRequest.status); //200
+					alert(XMLHttpRequest.statusText); //load
+                    alert(XMLHttpRequest.responseXML); //underfined
+                    alert(XMLHttpRequest.responseText); //underfined
+                    alert(textStatus); //parsererror
+                    alert(errorThrown); //Error:success_jsonpCallback was not called
+	             }
+	         });
+		}	
+		setInterval(getData(), 1000); //每隔1s更新报名人数
+
+	})	 
+	</script>
+</html>

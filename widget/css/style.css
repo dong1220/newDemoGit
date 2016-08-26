@@ -1,0 +1,87 @@
+@charset "utf-8";
+/*pc*/
+.header{
+	width: 900px;
+	margin: 10px auto;
+}
+.mainCon {
+	width: 900px;
+	margin: 0 auto;
+}
+.mainCon .title{
+	font-size: 22px;
+	margin: 30px 0;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 50px;
+}
+.mainCon .title p{text-align: justify;}
+.mainCon .title .share{
+	margin: 10px 20px 0 0;
+}
+.mainCon .title .share a{
+	display: block;
+	float: left;
+	margin-left: 10px;
+
+}
+.mainCon .actPhoto{
+	width: 650px;
+	height: 450px;
+	margin: 0 auto;
+}
+.mainCon .actInfo{
+	width: 650px;
+	margin: 20px auto;
+	font-size: 15px;
+}
+.mainCon .actInfo p{
+	text-indent: 2em;
+	line-height: 20px;
+	text-align: justify;
+	padding-bottom: 10px;
+}
+.footer{
+	width: 100%;
+	padding: 10px 0;
+	background: #242022;
+	text-align: center;
+	color:#fff;
+}
+.sign{
+	width: 260px;
+	background: #fff;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	border: 1px solid #6FACD5;
+	height: 200px;
+	z-index: 9999;
+	font-size: 14px;
+}
+.sign h3{
+	text-align: center;
+	font-size: 17px;
+	line-height: 40px;
+	color: #6FACD5;
+	font-weight: 400;
+	margin: -20px auto 0;
+  	width: 40%;
+  	background-color: #fff;
+  	border: 1px solid #6FACD5;
+}
+.sign .inputBox{
+	width: 220px;
+	margin: 20px auto;
+}
+.sign .btnSubmit{
+	display: block;width: 60%;
+	line-height: 30px;
+	background: #6FACD5;
+	border-radius: 4px;
+	color: #fff;
+	margin:20px auto;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-size: 14px;
+}
